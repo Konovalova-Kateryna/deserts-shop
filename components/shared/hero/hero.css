@@ -1,0 +1,39 @@
+
+.bg-image{
+    width: 196px;
+    height: 302px;      
+    @media screen and (min-width: 1920px) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 0;
+        width: 320px;
+        height: 530px;       
+    }
+}
+/* 
+.hero-title {
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  @media screen and (min-width: 1920px) {
+    
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   
+  }
+} */
+
+.hero-title-end {
+  color: white;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: 1px black;
+
+  @media screen and (min-width: 1920px) {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: none;
+    -webkit-text-stroke: 3px black;
+    display: inline-block;
+
+  }
+}

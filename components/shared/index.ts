@@ -1,0 +1,11 @@
+export { Container } from "./container";
+export { Header } from "./header";
+export { Logo } from "./logo";
+export { Categories } from "./categories";
+export { Footer } from "./footer";
+export { ProductCard } from "./product-card";
+export { TrendProductComponent } from "./trend-product";
+export { SearchInput } from "./search-input";
+export { TitleComponent } from "./title";
+export { Hero } from "./hero/hero";
+export { SurprizeSection } from "./surprize-section";
