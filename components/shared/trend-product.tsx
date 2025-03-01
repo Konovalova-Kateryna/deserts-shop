@@ -33,7 +33,7 @@ export const TrendProductComponent: React.FC<Props> = ({ product }) => {
             src="/shadow.png"
             alt="shadow"
             width={320}
-            height={10}
+            height={30}
             className="absolute z-20 bottom-[-25px] lg:bottom-[15px] left-4 w-[260px] h-[30px] lg:h-12"
           />
           <div

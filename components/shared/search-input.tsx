@@ -22,10 +22,18 @@ export const SearchInput = () => {
   });
 
   useDebounce(
-    () => {
-      Api.products.search(query).then((items) => {
-        setProducts(items);
-      });
+    async () => {
+      if (!query.trim()) {
+        setProducts([]);
+        return;
+      }
+      try {
+        await Api.products.search(query).then((items) => {
+          setProducts(items);
+        });
+      } catch (error) {
+        console.log("search error", error);
+      }
     },
     250,
     [query]
@@ -83,8 +91,10 @@ export const SearchInput = () => {
             >
               <Image
                 className="rounded-sm h-8 w-8"
-                src={product.imageUrl}
+                src={product.imageUrl || "/NoPhoto.png"}
                 alt={product.name}
+                width={8}
+                height={8}
               />
               <span>{product.titleUa}</span>
             </Link>

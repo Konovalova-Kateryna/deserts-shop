@@ -3,10 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import "./hero.css";
 import { Container } from "../container";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+}
 
 export const Hero: React.FC<Props> = ({ className }) => {
   return (
-    <section className="w-full pt-11 pb-20 lg:pt-[63px] lg:pb-[268px] text-center lg:h-[866px] lg:text-center border-b-2 border-black">
+    <section
+      className={cn(
+        `w-full pt-11 pb-20 lg:pt-[63px] lg:pb-[268px] text-center lg:h-[866px] lg:text-center border-b-2 border-black`,
+        className
+      )}
+    >
       <Container>
         <div className=" lg:inline-block lg:text-start lg:w-[994px] lg:h-[535px] relative">
           <div className="w-full flex justify-center mb-[38px] lg:mb-0 lg:relative">

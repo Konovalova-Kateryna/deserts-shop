@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "./container";
 import NextLink from "next/link";
-import { Heart, CircleUserRound, ShoppingBasket, Menu } from "lucide-react";
+import { Heart, CircleUserRound, Menu } from "lucide-react";
 import { Logo } from "./logo";
-import { Button } from "../ui";
 import { SearchInput } from "./search-input";
+import { CartButton } from "./cart-button";
 
 interface Props {
   className?: string;
@@ -51,13 +51,7 @@ export const Header: React.FC<Props> = ({ className }) => {
                 </NextLink>
               </li>
             </ul>
-            <NextLink href="/basket">
-              <ShoppingBasket
-                size="48"
-                strokeWidth={1}
-                className="  cursor-pointer hover:text-red-500"
-              />
-            </NextLink>
+            <CartButton />
           </div>
         </div>
       </Container>

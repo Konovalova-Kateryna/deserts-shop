@@ -1,9 +1,4 @@
-import {
-  Container,
-  Hero,
-  SurprizeSection,
-  TitleComponent,
-} from "@/components/shared";
+import { Hero, SurprizeSection, TitleComponent } from "@/components/shared";
 
 import { HomeClient } from "@/components/shared/home-client";
 
@@ -27,7 +22,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="block mx-auto">
+    <div className="block mx-auto mt-[80px] lg:mt-[200px]">
       <Hero />
       <TitleComponent>Дивись наш асортимент</TitleComponent>
       <HomeClient categories={categories} trendProducts={trendProducts} />

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import NextLink from "next/link";
-import logo from "../../public/logo/Logo.svg";
+import logo from "../../public/logo/Logo.png";
 import React from "react";
 
 interface Props {

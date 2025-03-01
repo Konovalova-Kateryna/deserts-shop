@@ -9,8 +9,8 @@ import { Category } from "@prisma/client";
 interface Props {
   className?: string;
   categories: Category[];
-  activeCategory?: number | null;
-  onSelectCategory?: (categoryId: number) => void;
+  activeCategory?: string | null;
+  onSelectCategory?: (categoryId: string) => void;
 }
 
 export const Categories: React.FC<Props> = ({

@@ -1,11 +1,13 @@
 import { categories } from "./constants";
 import { prisma } from "./prisma-client";
 import { hashSync } from "bcrypt";
+import { nanoid } from "nanoid";
 
 async function up() {
   await prisma.user.createMany({
     data: [
       {
+        id: nanoid(),
         fullName: "User test",
         email: "user@test.ua",
         password: hashSync("test123", 10),
@@ -13,6 +15,7 @@ async function up() {
         verified: new Date(),
       },
       {
+        id: nanoid(),
         fullName: "Admin test",
         email: "admin@test.ua",
         password: hashSync("test123", 10),
@@ -28,32 +31,36 @@ async function up() {
   await prisma.product.createMany({
     data: [
       {
+        id: nanoid(),
         name: "Cupcake with ice cream and chocolate sauce",
-        categoryId: 3,
+        categoryId: "dcBiqrk0JcB4reNnF3NHa",
         price: 50,
         titleUa: "Капкейк з морозивом та шоколадним соусом",
         description: "Капкейк з морозивом та шоколадним соусом",
-        imageUrl: "",
+        imageUrl: "/ice_shoco.png",
       },
       {
+        id: nanoid(),
         name: "Raspberry cupcake with cream",
-        categoryId: 3,
+        categoryId: "dcBiqrk0JcB4reNnF3NHa",
         price: 55,
         titleUa: "Малиновий капкейк з вершковим кремом",
         description: "Малиновий капкейк з вершковим кремом",
-        imageUrl: "",
+        imageUrl: "/strawberry_cream.png",
       },
       {
+        id: nanoid(),
         name: "Lemon cupcake with almond shavings",
-        categoryId: 3,
+        categoryId: "dcBiqrk0JcB4reNnF3NHa",
         price: 60,
         titleUa: "Лимонний капкейк з мигдалевими стружками",
         description: "Лимонний капкейк з мигдалевими стружками",
-        imageUrl: "",
+        imageUrl: "/limon_almond.png",
       },
       {
+        id: nanoid(),
         name: "Cupcake with truffle and raspberry",
-        categoryId: 3,
+        categoryId: "dcBiqrk0JcB4reNnF3NHa",
         price: 70,
         titleUa: "Капкейк з трюфелем та малиною",
         description:
@@ -62,17 +69,19 @@ async function up() {
         trend: true,
       },
       {
+        id: nanoid(),
         name: "Cupcake with ice cream and chocolate sauce",
-        categoryId: 3,
+        categoryId: "dcBiqrk0JcB4reNnF3NHa",
         price: 50,
         titleUa: "Капкейк з морозивом та шоколадним соусом",
         description:
           "Має м'який бісквіт з додаванням морозива в середині, покритий смачним шоколадним соусом.",
-        imageUrl: "",
+        imageUrl: "/ice_shoco.png",
       },
       {
+        id: nanoid(),
         name: "Macaroon with lime filling",
-        categoryId: 1,
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
         price: 70,
         titleUa: "Макарон з лаймовою начинкою",
         description:
@@ -80,8 +89,9 @@ async function up() {
         imageUrl: "",
       },
       {
+        id: nanoid(),
         name: "Donut in chocolate glaze",
-        categoryId: 2,
+        categoryId: "_HAN2_CAz62PyCqJkaL0-",
         price: 50,
         titleUa: "Пончик в шоколадній глазурі",
         description:

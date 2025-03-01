@@ -2,14 +2,13 @@ import React from "react";
 import NextLink from "next/link";
 import { Logo } from "./logo";
 import Icon from "./icon";
-import { Container } from "./container";
 
 export const Footer: React.FC = () => {
   return (
     <footer className="w-full bg-black text-white">
-      <div className="sm:w-[360px] lg:w-[1920px]  mx-auto px-[50px] pt-[2px] pb-[45px] lg:h-[270px] lg:px-[225px] lg:pt-[1px] lg:pb-0 lg:flex text-center">
+      <div className="sm:w-[360px] lg:w-[1920px]  mx-auto px-[50px] pt-[2px] pb-[45px] lg:h-[270px] lg:px-[225px] lg:pb-1 lg:flex text-center">
         <Logo
-          classNameLink=" bg-white px-[22px] py-[6px] mx-auto mb-10 lg:h-full lg:py-[49px] lg:px-[9px] lg:ml-0 lg:mr-[220px] flex justify-center"
+          classNameLink=" bg-white px-[22px] py-[6px] mx-auto mb-10 lg:h-full lg:py-[49px] lg:px-[9px] lg:ml-0 lg:mr-[220px] lg:mb-0 flex justify-center"
           classNameLogo="w-[200px] h-[200px] lg:w-[222px] lg:h-full"
         />
         <div className=" font-segoe font-normal text-md leading-5 lg:flex lg:items-start lg:text-sm lg:pt-[84px] text-center ">
