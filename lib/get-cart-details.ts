@@ -8,6 +8,7 @@ export interface CartStateItem {
   imageUrl: string;
   titleUa: string;
   price: number;
+  disabled?: boolean;
 }
 
 interface ReturnProps {
@@ -28,7 +29,8 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
     titleUa: item.product?.titleUa,
     imageUrl: item.product?.imageUrl,
     price: calcCartItemPrice(item),
-  }));
+    disabled: false,
+  })) as CartStateItem[];
 
   return {
     items,

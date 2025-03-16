@@ -6,11 +6,19 @@ import { Logo } from "./logo";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 
+import { Button } from "../ui";
+
 interface Props {
   className?: string;
+  hasSearch?: boolean;
+  hasCart?: boolean;
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<Props> = ({
+  className,
+  hasSearch = true,
+  hasCart = true,
+}) => {
   return (
     <header className={className}>
       <Container>
@@ -28,30 +36,41 @@ export const Header: React.FC<Props> = ({ className }) => {
             classNameLink={""}
           />
           <div className="flex items-center gap-6">
-            <ul className="hidden lg:flex gap-6">
-              <li>
-                <SearchInput />
-              </li>
-              <li>
-                <NextLink href="">
-                  <Heart
-                    size="48"
-                    strokeWidth={1}
-                    className="  cursor-pointer hover:text-red-500"
-                  />
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/profile">
+            <div className="flex gap-6">
+              {hasSearch && (
+                <div className="hidden lg:flex gap-6">
+                  <SearchInput />
+
+                  <NextLink href="">
+                    <Heart
+                      size="48"
+                      strokeWidth={1}
+                      className="  cursor-pointer hover:text-red-500"
+                    />
+                  </NextLink>
+                </div>
+              )}
+
+              {hasCart ? (
+                <NextLink href="/profile" className="hidden lg:flex">
                   <CircleUserRound
                     size="48"
                     strokeWidth={1}
-                    className="  cursor-pointer hover:text-red-500"
+                    className="cursor-pointer hover:text-red-500"
                   />
                 </NextLink>
-              </li>
-            </ul>
-            <CartButton />
+              ) : (
+                <Button className="flex items-center justify-center w-[200px] rounded-[8px] ">
+                  {/* <CircleUserRound
+                    size="48"
+                    strokeWidth={1}
+                    className="w-48 h-48"
+                  /> */}
+                  Вихід
+                </Button>
+              )}
+            </div>
+            {hasCart && <CartButton />}
           </div>
         </div>
       </Container>

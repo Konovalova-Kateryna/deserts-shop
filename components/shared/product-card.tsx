@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Heart, ShoppingBasket } from "lucide-react";
 import { Product } from "@prisma/client";
+import { toggleFavorite } from "./toggle-favorite";
+import { cn } from "@/lib/utils";
 
 interface Props {
   item: Product;
@@ -20,6 +22,19 @@ const colors = [
 
 export const ProductCard: React.FC<Props> = ({ index, item }) => {
   const bgColor = useMemo(() => colors[index % colors.length], [index]);
+  const [isFavorite, setFavorite] = useState(false);
+
+  const handleClick = async ({
+    productId,
+    isFavorite,
+  }: {
+    productId: string;
+    isFavorite: boolean;
+  }) => {
+    console.log("str toggle favorite", productId);
+    await toggleFavorite(productId, isFavorite);
+    setFavorite(!isFavorite);
+  };
 
   return (
     <div className="h-full w-full relative">
@@ -44,16 +59,20 @@ export const ProductCard: React.FC<Props> = ({ index, item }) => {
         <button
           className="w-12 h-12 ml-auto transition-all col-start-2 row-start-1 lg:row-start-4 self-end"
           aria-label="Add to favorites"
+          onClick={() => handleClick({ productId: item.id, isFavorite })}
         >
           <Heart
-            className=" hover:text-red-500 w-full h-full hover:stroke-2"
+            className={cn(
+              `hover:text-red-500 w-full h-full hover:stroke-2`,
+              isFavorite && "fill-red-500"
+            )}
             strokeWidth={1}
           />
         </button>
         <button className="w-12 h-12 ml-auto  lg:flex lg:items-center lg:justify-center self-end lg:mr-auto lg:px-10 lg:py-3 lg:w-[214px] lg:border-solid lg:border-2 lg:border-black transition-all col-start-2 row-start-4 lg:col-start-1 lg:row-start-4">
           <span className="lg:hidden w-12 h-12 ">
             <ShoppingBasket
-              className=" hover:text-red-500 w-full h-full hover:stroke-2"
+              className={cn(`hover:text-red-500 w-full h-full hover:stroke-2 `)}
               strokeWidth={1}
             />
           </span>

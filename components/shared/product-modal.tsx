@@ -11,12 +11,14 @@ interface Props {
   product: Product;
   onBtnClick?: () => void;
   loading?: boolean;
+  onFavoriteBtn?: () => void;
 }
 
 export const ProductModal: React.FC<Props> = ({
   product,
   onBtnClick,
   loading,
+  onFavoriteBtn,
 }) => {
   if (!product) {
     return notFound();
@@ -60,6 +62,7 @@ export const ProductModal: React.FC<Props> = ({
                 <button
                   className="w-12 h-12  transition-all col-start-2 row-start-1 lg:row-start-2 self-end justify-self-end"
                   aria-label="Add to favorites"
+                  onClick={() => onFavoriteBtn?.()}
                 >
                   <Heart
                     className=" hover:text-red-500 w-full h-full hover:stroke-2 "

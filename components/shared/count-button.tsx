@@ -33,7 +33,7 @@ export const CauntButton: React.FC<Props> = ({
         />
       </button>
 
-      <b className={size === "sm" ? "text-base" : "text-2xl"}>{value}</b>
+      <b className={className}>{value}</b>
       <button onClick={() => onClick && onClick("plus")}>
         <Plus
           size={size === "sm" ? "16" : "24"}

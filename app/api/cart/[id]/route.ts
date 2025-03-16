@@ -7,10 +7,10 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = params.id;
+    const { id } = await params;
     const data = (await req.json()) as { quantity: number };
     const token = req.cookies.get("cartToken")?.value;
-    console.log("str13 data", data);
+
     if (!token) {
       return NextResponse.json({ message: "Cart not found" }, { status: 404 });
     }
@@ -88,3 +88,5 @@ export async function DELETE(
     );
   }
 }
+
+// add product to wishlist

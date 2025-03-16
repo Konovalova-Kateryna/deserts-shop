@@ -3,6 +3,7 @@ import React from "react";
 import { CauntButton } from "./count-button";
 import { DeleteBtn } from "./delete-btn";
 import Image from "next/image";
+import { Trash2 } from "lucide-react";
 
 interface Props {
   name: string;
@@ -10,6 +11,7 @@ interface Props {
   imageUrl: string;
   className: string;
   quantity: number;
+  disabled?: boolean;
   onClickCountBtn?: (type: "plus" | "minus") => void;
   onClickRemove?: () => void;
 }
@@ -20,6 +22,7 @@ export const CartDrawerItem: React.FC<Props> = ({
   imageUrl,
   className,
   quantity,
+  disabled,
   onClickCountBtn,
   onClickRemove,
 }) => {
@@ -27,6 +30,7 @@ export const CartDrawerItem: React.FC<Props> = ({
     <div
       className={cn(
         "flex gap-3 items-center justify-between bg-white p-5 rounded-lg font-segoe",
+        { "opacity-50 pointer-events-none": disabled },
         className
       )}
     >
@@ -48,7 +52,9 @@ export const CartDrawerItem: React.FC<Props> = ({
             onClick={onClickCountBtn}
             value={quantity}
           />
-          <DeleteBtn className="" onClickRemove={onClickRemove} />
+          <DeleteBtn className="" onClickRemove={onClickRemove}>
+            <Trash2 size="24" strokeWidth={1} />
+          </DeleteBtn>
         </div>
       </div>
     </div>

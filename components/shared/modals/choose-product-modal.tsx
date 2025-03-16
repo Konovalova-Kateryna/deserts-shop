@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Product } from "@prisma/client";
@@ -9,6 +9,7 @@ import { ProductModal } from "@/components/shared";
 import Icon from "../icon";
 import { useCartStore } from "@/store";
 import toast from "react-hot-toast";
+import { toggleFavorite } from "../toggle-favorite";
 
 interface Props {
   className?: string;
@@ -20,6 +21,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
 
   const addCartItem = useCartStore((state) => state.addCartItem);
   const loading = useCartStore((state) => state.loading);
+  const [isFavorite, setFavorite] = useState(false);
 
   const onAddProduct = async () => {
     try {
@@ -34,6 +36,27 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
       console.error(error);
     }
   };
+
+  const onFavoriteBtn = async ({
+    productId,
+    isFavorite,
+  }: {
+    productId: string;
+    isFavorite: boolean;
+  }) => {
+    console.log("str toggle favorite", productId);
+    await toggleFavorite(productId, isFavorite);
+    setFavorite(!isFavorite);
+  };
+
+  // useEffect(() => {
+  //   const fetchFavoriteStatus = async () => {
+  //     const response = await fetch(`/api/favorite?productId=${product.id}`);
+  //     const data = await response.json();
+  //     setFavorite(data.isFavorite);
+  //   };
+  //   fetchFavoriteStatus();
+  // }, [product.id]);
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -66,6 +89,9 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           product={product}
           onBtnClick={onAddProduct}
           loading={loading}
+          onFavoriteBtn={() =>
+            onFavoriteBtn({ productId: product.id, isFavorite })
+          }
         />
       </DialogContent>
     </Dialog>
