@@ -31,7 +31,7 @@ export const ProductModal: React.FC<Props> = ({
         </div>
       ) : (
         <section className={`mx-auto z-30 ${loading ? "opacity-50" : ""}`}>
-          <TitleComponent className="mb-0 p-0 lg:mb-0 bg-transparent text-black lg:leading-[60px]">
+          <TitleComponent className="mb-0 p-0 lg:mb-0 bg-transparent text-black lg:leading-[60px] font-segoe">
             {product.titleUa}
           </TitleComponent>
           <div className="lg:flex flex-row gap-[200px] justify-center mt-5 ">

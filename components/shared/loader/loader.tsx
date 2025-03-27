@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import "./loader.css";
 
 export const Loader = () => {
@@ -85,4 +86,8 @@ export const Loader = () => {
       </svg>
     </div>
   );
+};
+
+export const LoaderDots = (className?: string) => {
+  return <span className={cn("loader", className)}></span>;
 };

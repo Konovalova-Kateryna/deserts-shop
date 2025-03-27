@@ -18,7 +18,6 @@ export const FormTextarea: React.FC<Props> = ({
   name,
   label,
   required,
-
   ...props
 }) => {
   const {
@@ -28,7 +27,7 @@ export const FormTextarea: React.FC<Props> = ({
     setValue,
   } = useFormContext();
 
-  const text = watch(name);
+  const value = watch(name);
   const errorText = errors?.[name]?.message as string;
 
   const onClickClear = () => {
@@ -41,8 +40,12 @@ export const FormTextarea: React.FC<Props> = ({
         {required && <span className="text-red-500">*</span>}
       </p>
       <div className="relative">
-        <Textarea className="h-12 text-base" {...register(name)} {...props} />
-        {Boolean(text) && <ClearBtn onClick={onClickClear} />}
+        <Textarea
+          className="text-lg lg:text-xl pr-9"
+          {...register(name)}
+          {...props}
+        />
+        {value && <ClearBtn className="top-6" onClick={onClickClear} />}
       </div>
       {errorText && <p className="text-red-500 text-sm">{errorText}</p>}
     </div>

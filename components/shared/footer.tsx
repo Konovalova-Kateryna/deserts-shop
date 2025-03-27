@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
         <div className=" font-segoe font-normal text-md leading-5 lg:flex lg:items-start lg:text-sm lg:pt-[84px] text-center ">
           <ul className=" uppercase mb-10">
             <li className="mb-6">
-              <NextLink href="">Головна</NextLink>
+              <NextLink href="/">Головна</NextLink>
             </li>
             <li className="mb-6">
               <NextLink href="/about">Про нас</NextLink>

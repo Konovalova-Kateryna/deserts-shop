@@ -8,17 +8,23 @@ import {
 } from "@/components/shared";
 
 import { useCart } from "@/hooks";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, set, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   checkoutFormSchema,
   CheckoutFormValues,
 } from "@/components/shared/checkout/checkout-form-schema";
+import { createOrder } from "@/app/actions";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 const deliveryPrice = 150;
 
 export default function CheckoutPage() {
-  const { totalAmount, items, removeCartItem, updateItemQuantity } = useCart();
+  const [submitting, setSubmitting] = useState(false);
+  const { totalAmount, items, removeCartItem, updateItemQuantity, loading } =
+    useCart();
+
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
@@ -31,8 +37,25 @@ export default function CheckoutPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<CheckoutFormValues> = (data) => {
-    console.log(data);
+  const onSubmit = async (data: CheckoutFormValues) => {
+    try {
+      setSubmitting(true);
+
+      const url = await createOrder(data);
+
+      toast.success(
+        "Замовлення створено. Зараз Вас буде перенаправлено на сторінку оплати",
+        { icon: "✅" }
+      );
+
+      if (url) {
+        location.href = url;
+      }
+    } catch (err) {
+      console.error(err);
+      setSubmitting(false);
+      toast.error("Замовлення не створено", { icon: "❌" });
+    }
   };
 
   const onClickCountBtn = (
@@ -50,8 +73,8 @@ export default function CheckoutPage() {
   const totalPrice = totalAmount + deliveryPrice;
 
   return (
-    <Container className="mt-12 z-30">
-      <h2 className="text-[30px] lg:text-[40px] font-bold mb-9 mx-auto text-center">
+    <Container className="mt-5 lg:mt-12 z-30">
+      <h2 className="text-2xl lg:text-[40px] font-bold mb-5 lg:mb-9 mx-auto text-center">
         Оформлення замовлення
       </h2>
       <FormProvider {...form}>
@@ -62,13 +85,22 @@ export default function CheckoutPage() {
                 items={items}
                 removeCartItem={removeCartItem}
                 onClickCountBtn={onClickCountBtn}
+                loading={loading}
               />
-              <CheckoutContacts />
+              <CheckoutContacts
+                loading={loading}
+                className={
+                  loading
+                    ? "opacity-40 pointer-events-none"
+                    : `text-center lg:text-left`
+                }
+              />
             </div>
             <CheckoutSidebar
               totalPrice={totalPrice}
               totalAmount={totalAmount}
               deliveryPrice={deliveryPrice}
+              loading={loading || submitting}
             />
           </div>
         </form>

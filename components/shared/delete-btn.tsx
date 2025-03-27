@@ -14,6 +14,7 @@ export const DeleteBtn: React.FC<Props> = ({
 }) => {
   return (
     <button
+      type="button"
       onClick={onClickRemove}
       className={cn("hover:text-red-500", className)}
     >

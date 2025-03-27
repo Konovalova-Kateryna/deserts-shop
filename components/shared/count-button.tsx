@@ -23,6 +23,7 @@ export const CauntButton: React.FC<Props> = ({
       )}
     >
       <button
+        type="button"
         onClick={() => onClick && onClick("minus")}
         disabled={value === 1}
       >
@@ -34,7 +35,7 @@ export const CauntButton: React.FC<Props> = ({
       </button>
 
       <b className={className}>{value}</b>
-      <button onClick={() => onClick && onClick("plus")}>
+      <button type="button" onClick={() => onClick && onClick("plus")}>
         <Plus
           size={size === "sm" ? "16" : "24"}
           strokeWidth={1}

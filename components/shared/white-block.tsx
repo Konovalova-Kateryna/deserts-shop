@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { TitleComponent } from "./title";
 import React from "react";
 
 interface Props {
@@ -19,8 +18,10 @@ export const WhiteBlock: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <div className={cn("bg-white rounded-3xl", className)}>
       {title && (
-        <div className="flex items-center justify-between p-5 px-7 border-b border-gray-100">
-          <h3 className="text-3xl font-bold">{title}</h3>
+        <div className="flex items-center justify-center lg:justify-between p-5 px-7 border-b border-gray-100">
+          <h3 className="text-2xl lg:text-3xl font-bold mx-auto lg:mx-0">
+            {title}
+          </h3>
           {endAdornment}
         </div>
       )}

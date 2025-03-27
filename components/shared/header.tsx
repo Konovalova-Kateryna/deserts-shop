@@ -1,12 +1,10 @@
 import React from "react";
 import { Container } from "./container";
 import NextLink from "next/link";
-import { Heart, CircleUserRound, Menu } from "lucide-react";
+import { Heart, CircleUserRound, Menu, LogOut } from "lucide-react";
 import { Logo } from "./logo";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
-
-import { Button } from "../ui";
 
 interface Props {
   className?: string;
@@ -60,14 +58,17 @@ export const Header: React.FC<Props> = ({
                   />
                 </NextLink>
               ) : (
-                <Button className="flex items-center justify-center w-[200px] rounded-[8px] ">
-                  {/* <CircleUserRound
+                <NextLink
+                  href="/"
+                  className="flex items-center justify-center w-[48px] rounded-[8px] "
+                >
+                  <LogOut
                     size="48"
+                    color="black"
                     strokeWidth={1}
-                    className="w-48 h-48"
-                  /> */}
-                  Вихід
-                </Button>
+                    className="  cursor-pointer hover:text-red-500"
+                  />
+                </NextLink>
               )}
             </div>
             {hasCart && <CartButton />}

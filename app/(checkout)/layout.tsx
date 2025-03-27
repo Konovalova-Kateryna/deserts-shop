@@ -12,7 +12,7 @@ export default function CheckoutLayout({
 }>) {
   return (
     <main
-      className="min-h-screen bg-cover bg-center z-0"
+      className="min-h-screen bg-cover bg-center z-0 pt-5"
       style={{
         backgroundImage: "url('/modal_bg_img.png')",
       }}

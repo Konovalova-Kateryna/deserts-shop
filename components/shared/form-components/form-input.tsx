@@ -6,12 +6,14 @@ import { Input } from "@/components/ui";
 import { ErrorText } from "../error-text";
 import { ClearBtn } from "../clear-btn";
 import { useFormContext } from "react-hook-form";
+import { RefObject } from "react";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
   required?: boolean;
   className?: string;
+  ref?: RefObject<HTMLInputElement | null>;
 }
 
 export const FormInput: React.FC<Props> = ({
@@ -19,6 +21,7 @@ export const FormInput: React.FC<Props> = ({
   label,
   required,
   className,
+
   ...props
 }) => {
   const {
@@ -28,12 +31,13 @@ export const FormInput: React.FC<Props> = ({
     setValue,
   } = useFormContext();
 
-  const onClearClick = () => {
-    setValue(name, "");
-  };
-
   const value = watch(name);
   const errorText = errors[name]?.message as string;
+
+  const onClearClick = () => {
+    setValue(name, "", { shouldValidate: true });
+  };
+
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       {label && (
@@ -43,7 +47,11 @@ export const FormInput: React.FC<Props> = ({
         </p>
       )}
       <div className="relative">
-        <Input className="h-12 text-base" {...register(name)} {...props} />
+        <Input
+          className="h-12 text-lg lg:text-xl"
+          {...register(name)}
+          {...props}
+        />
         {value && <ClearBtn onClick={onClearClick} />}
       </div>
       {errorText && <ErrorText text={errorText} className="mt-2" />}

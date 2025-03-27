@@ -21,6 +21,7 @@ export { CheckoutItem } from "./checkout-item";
 export { ErrorText } from "./error-text";
 export { RequiredSymbol } from "./required-symbol";
 export { ClearBtn } from "./clear-btn";
+export { AddressAutocompleteComponent } from "./address-autocomplete";
 
 export * from "./form-components";
 export * from "./modals";
