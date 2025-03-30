@@ -3,7 +3,6 @@ import { WhiteBlock } from "../white-block";
 import { CheckoutDetails } from "../checkout-details";
 import { Button, Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { Loader, LoaderDots } from "../loader/loader";
 
 interface Props {
   className?: string;
