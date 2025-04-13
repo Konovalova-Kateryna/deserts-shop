@@ -1,6 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+import { Providers } from "@/components/shared/providers";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -24,8 +24,7 @@ export default function MainLayout({
         <link rel="icon" href="/logo/Logo.png" data-rh="true" />
       </head>
       <body className={`${roboto.variable} antialiased`}>
-        {children}
-        <Toaster />
+        <Providers> {children}</Providers>
       </body>
     </html>
   );

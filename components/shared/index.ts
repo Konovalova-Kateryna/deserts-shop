@@ -22,7 +22,11 @@ export { ErrorText } from "./error-text";
 export { RequiredSymbol } from "./required-symbol";
 export { ClearBtn } from "./clear-btn";
 export { AddressAutocompleteComponent } from "./address-autocomplete";
+export { Providers } from "./providers";
+export { ProfileBtn } from "./profile-btn";
+export { ProfileForm } from "./profile-form";
 
 export * from "./form-components";
 export * from "./modals";
 export * from "./checkout";
+export * from "./auth";

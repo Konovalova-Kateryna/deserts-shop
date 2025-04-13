@@ -109,11 +109,14 @@ model Order {
 }
 
 model VerificationCode {
-    id       String   @id @unique @default(dbgenerated())
-    userId   String   @unique
-    code     String
+    id String @id @unique @default(dbgenerated())
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String @unique
+
+    code String
+
     createAt DateTime @default(now())
-    user     User     @relation(fields: [userId], references: [id])
 }
 
 enum OrderStatus {

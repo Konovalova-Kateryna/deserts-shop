@@ -1,5 +1,3 @@
-import { Prisma } from "@prisma/client";
-
 interface sendEmailProps {
   sender: string;
   email: string;
@@ -10,7 +8,13 @@ interface sendEmailProps {
   items: any[];
 }
 
-export const mailOptions = ({
+interface mailOptionsForVerificationCodeProps {
+  sender: string;
+  email: string;
+  code: string;
+}
+
+export const mailOptionsForOrder = ({
   sender,
   email,
   firstName,
@@ -23,7 +27,7 @@ sendEmailProps) => {
   return {
     from: sender,
     to: email,
-    subject: `DESERT-SHOP! Нове замовлення № ${orderId}`,
+    subject: `CAKE-STUDIO! Нове замовлення № ${orderId}`,
     html: `<h1>Вітаємо, ${firstName}</h1>
                   <p>Дякуємо за Ваше замовлення. Ми зателефонуємо Вам найближчим часом для підтвердження.</p>
                   <p>Загальна вартість замовлення - ${totalAmount} грн.</p>
@@ -31,6 +35,24 @@ sendEmailProps) => {
                 ${items.map((item) => {
                   return `<p>${item.product.titleUa} - ${item.quantity} шт</p>`;
                 })}
+                  `,
+  };
+};
+
+export const mailOptionsForVerificationCode = ({
+  sender,
+  email,
+  code,
+}: mailOptionsForVerificationCodeProps) => {
+  return {
+    from: sender,
+    to: email,
+    subject: `CAKE-STUDIO! Підтвердження email`,
+    html: `<h1>Вітаємо!</h1>
+                  <p>Ваш код підтвердження: ${code}</p>
+                  
+                  <a href="http://localhost:3000/api/auth/verify?code=${code}">Підтвердити реєстрацію</a>
+                 
                   `,
   };
 };

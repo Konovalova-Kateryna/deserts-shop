@@ -15,11 +15,11 @@ interface Props {
   className?: string;
   categories: CategoryWithProducts[];
   trendProducts: Product[];
-  activeCategory?: number | null;
+  // activeCategory?: string | null;
 }
 
 export const HomeClient: React.FC<Props> = ({ categories, trendProducts }) => {
-  const [activeCategory, setActiveCategory] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const allProducts = categories.flatMap((cat) => cat.products ?? []);
 
   const { filteredProducts, trendingProduct } = filterProductsByCategory(

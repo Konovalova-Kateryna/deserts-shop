@@ -3,7 +3,7 @@ export { Carousel } from "./carousel";
 export { Accordion } from "./accordion";
 export { Card } from "./card";
 export { Checkbox } from "./checkbox";
-export { Dialog } from "./dialog";
+export * from "./dialog";
 export { Input } from "./input";
 export { NavigationMenu } from "./navigation-menu";
 export { Progress } from "./progress";
