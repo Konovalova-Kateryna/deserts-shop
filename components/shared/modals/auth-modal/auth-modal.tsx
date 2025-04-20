@@ -1,8 +1,6 @@
-import { Button, Dialog, DialogContent } from "@/components/ui";
-
 import React from "react";
-import { SignIn } from "../../auth";
-import { redirect } from "next/dist/server/api-utils";
+
+import { Button, Dialog, DialogContent } from "@/components/ui";
 import { signIn } from "next-auth/react";
 import { LoginForm } from "./forms/login-form";
 import { RegisterForm } from "./forms/register-form";

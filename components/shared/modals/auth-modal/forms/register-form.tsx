@@ -5,24 +5,18 @@ import { FormRegisterSchema, TFormRegisterType } from "./schemas";
 import { FormInput } from "@/components/shared/form-components";
 import { Button } from "@/components/ui";
 import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
 
 import { Title } from "@radix-ui/react-dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUser } from "@/app/actions";
-import { nanoid } from "nanoid";
 
 interface Props {
-  className: string;
+  className?: string;
   onClose?: VoidFunction;
   onClickLogin?: VoidFunction;
 }
 
-export const RegisterForm: React.FC<Props> = ({
-  className,
-  onClose,
-  onClickLogin,
-}) => {
+export const RegisterForm: React.FC<Props> = ({ onClose }) => {
   const form = useForm<TFormRegisterType>({
     resolver: zodResolver(FormRegisterSchema),
     defaultValues: {
@@ -45,7 +39,7 @@ export const RegisterForm: React.FC<Props> = ({
       toast.success("Успішно зареєстровано!", { icon: "✅" });
     } catch (error) {
       console.error("Error [REGISTER]", error);
-      toast.error(error.message, { icon: "❌" });
+      toast.error(error?.message, { icon: "❌" });
     }
   };
 

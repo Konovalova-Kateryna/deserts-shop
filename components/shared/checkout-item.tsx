@@ -24,7 +24,7 @@ export const CheckoutItem: React.FC<Props> = ({
   imageUrl,
   className,
   quantity,
-  disabled,
+  // disabled,
   onClickCountBtn,
   onClickRemove,
 }) => {

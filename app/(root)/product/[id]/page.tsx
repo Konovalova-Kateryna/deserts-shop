@@ -5,11 +5,14 @@ import { Button } from "@/components/ui";
 import { Heart } from "lucide-react";
 import { Container } from "@/components/shared";
 
-export default async function ProductPage({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
+interface PageParams {
+  params: {
+    id: string;
+  };
+}
+
+export default async function ProductPage({ params }: PageParams) {
+  const { id } = params;
   const product = await prisma.product.findFirst({ where: { id } });
 
   if (!product) {

@@ -4,7 +4,6 @@ import { ChevronDown, Home, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import Icon from "../../icon";
-import { set } from "react-hook-form";
 import { AuthModal } from "../auth-modal/auth-modal";
 import { Button } from "@/components/ui";
 

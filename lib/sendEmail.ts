@@ -5,6 +5,7 @@ interface sendEmailProps {
   orderId: string;
   orderAddress: string;
   totalAmount: number;
+  // eslint-disable-next-line
   items: any[];
 }
 

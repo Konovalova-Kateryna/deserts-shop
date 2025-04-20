@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "../ui";
 import { TitleComponent } from "./title";
 import { Container } from "./container";
 import Link from "next/link";

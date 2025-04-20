@@ -67,7 +67,7 @@ export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
       case "popular":
 
       default:
-        return products.sort((a, b) => a.favoriteCount - b.favoriteCount);
+        return products.sort((a, b) => a.favorite - b.favorite);
     }
   }, [filteredProducts, sortOptions]);
 
