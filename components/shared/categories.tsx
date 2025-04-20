@@ -19,13 +19,6 @@ export const Categories: React.FC<Props> = ({
   activeCategory,
   onSelectCategory,
 }) => {
-  // const [isActive, setIsActive] = useState<string | null>(null);
-
-  // const handleClick = (categoryName: string) => {
-  //   onSelectCategory(category.id);
-  //   // setIsActive(categoryName === isActive ? null : categoryName);
-  // };
-
   return (
     <div className={cn("flex lg:flex-col", className)}>
       {categories.map((cat) => (

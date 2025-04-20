@@ -7,10 +7,15 @@ export const toggleFavorite = async (
     return;
   }
   try {
-    console.log("str6 favorite", productId);
+    // const userSession = await getUserSession();
+    // if (!userSession) {
+    //   toast("Потрібна авторизація", { icon: "❌" });
+    //   return;
+    // }
+
     if (isFavorite) {
       await fetch("/api/favorite", {
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify({ productId }),
       });
     } else {

@@ -15,7 +15,6 @@ interface Props {
   className?: string;
   categories: CategoryWithProducts[];
   trendProducts: Product[];
-  // activeCategory?: string | null;
 }
 
 export const HomeClient: React.FC<Props> = ({ categories, trendProducts }) => {

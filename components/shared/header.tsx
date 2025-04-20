@@ -1,9 +1,9 @@
 "use client";
 
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Container } from "./container";
 import NextLink from "next/link";
-import { Heart, Menu, LogOut } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Logo } from "./logo";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
@@ -17,14 +17,9 @@ import toast from "react-hot-toast";
 interface Props {
   className?: string;
   hasSearch?: boolean;
-  hasCart?: boolean;
 }
 
-export const Header: React.FC<Props> = ({
-  className,
-  hasSearch = true,
-  hasCart = true,
-}) => {
+export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
   const router = useRouter();
 
@@ -47,17 +42,17 @@ export const Header: React.FC<Props> = ({
         toast.success(toastMessage, { duration: 3000 });
       }, 1000);
     }
-  }, []);
+  }, [searchParams, router]);
 
   return (
     <header className={className}>
       <Container>
-        <div className="flex justify-between items-center lg:px-[80px] ">
+        <div className="flex justify-between items-center ">
           <button>
             <BurgerBtn />
           </button>
           <Logo
-            classNameLogo="w-[94px] h-[78px] lg:w-[204px] lg:h-[170px]"
+            classNameLogo="w-[94px] h-[78px] lg:w-[204px] lg:h-[170px] lg:ml-[10rem]"
             classNameLink={""}
           />
           <div className="flex items-center gap-6">
@@ -95,7 +90,7 @@ export const Header: React.FC<Props> = ({
                 </NextLink>
               )} */}
             </div>
-            {hasCart && <CartButton />}
+            <CartButton />
           </div>
         </div>
       </Container>

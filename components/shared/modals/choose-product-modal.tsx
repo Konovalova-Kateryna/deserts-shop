@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Product } from "@prisma/client";

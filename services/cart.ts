@@ -24,8 +24,6 @@ export const removeItem = async (itemId: string): Promise<CartDTO> => {
 export const addCartItem = async (
   values: CreateCartItemValues
 ): Promise<CartDTO> => {
-  console.log("str 27 Cart service values", values);
-
   const { data } = await axiosInstance.post<CartDTO>("/cart", values);
   return data;
 };

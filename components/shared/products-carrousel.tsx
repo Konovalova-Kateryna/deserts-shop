@@ -8,6 +8,7 @@ import {
 import { ProductCard } from "./product-card";
 import React from "react";
 import { Product } from "@prisma/client";
+import Link from "next/link";
 
 export const ProductsCarousel: React.FC<{ products: Product[] }> = ({
   products,
@@ -27,7 +28,9 @@ export const ProductsCarousel: React.FC<{ products: Product[] }> = ({
             key={item.id}
             className="basis-full h-full lg:basis-1/3 "
           >
-            <ProductCard item={item} index={index} />
+            <Link href={`/product/${item.id}`}>
+              <ProductCard item={item} index={index} showDescription={false} />
+            </Link>
           </CarouselItem>
         ))}
       </CarouselContent>

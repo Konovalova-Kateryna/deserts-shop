@@ -36,7 +36,7 @@ export const Hero: React.FC<Props> = ({ className }) => {
           </p>
           <Link
             className="inline-block py-5 lg:py-[14px] text-center w-full lg:w-[190px] border-solid border-2 border-black font-segoe uppercase font-normal text-md tracking-widest max-w-[320px]"
-            href="/products"
+            href="/assortment"
           >
             обирай
           </Link>

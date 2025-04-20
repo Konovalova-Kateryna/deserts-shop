@@ -88,5 +88,3 @@ export async function DELETE(
     );
   }
 }
-
-// add product to wishlist

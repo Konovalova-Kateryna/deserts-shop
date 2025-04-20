@@ -17,12 +17,14 @@ model User {
     provider         String?
     providerId       String?
     role             UserRole          @default(USER)
+    phone            String?
+    address          String?
     verified         DateTime?
     cart             Cart?
     orders           Order[]
     verificationCode VerificationCode?
 
-    Favorite Favorite[]
+    favorite Favorite?
 }
 
 model Category {
@@ -51,21 +53,30 @@ model Product {
     CartItem    CartItem[]
     category    Category   @relation(fields: [categoryId], references: [id])
 
-    Favorite Favorite[]
+    FavoriteItem FavoriteItem[]
 }
 
 model Favorite {
     id     String @id @unique @default(dbgenerated())
-    userId String
+    userId String @unique
+    token  String @unique
 
-    productId String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    user    User    @relation(fields: [userId], references: [id])
-    product Product @relation(fields: [productId], references: [id])
+    user  User           @relation(fields: [userId], references: [id])
+    items FavoriteItem[]
+}
 
-    @@unique([userId, productId])
+model FavoriteItem {
+    id         String @id @unique @default(dbgenerated())
+    favoriteId String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    productId String
+    favorite  Favorite @relation(fields: [favoriteId], references: [id])
+    product   Product  @relation(fields: [productId], references: [id])
 }
 
 model Cart {

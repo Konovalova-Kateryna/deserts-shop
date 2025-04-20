@@ -25,6 +25,8 @@ export { AddressAutocompleteComponent } from "./address-autocomplete";
 export { Providers } from "./providers";
 export { ProfileBtn } from "./profile-btn";
 export { ProfileForm } from "./profile-form";
+export { Assortment } from "./assortment";
+export { AssortimentCategories } from "./assortiment-categories";
 
 export * from "./form-components";
 export * from "./modals";

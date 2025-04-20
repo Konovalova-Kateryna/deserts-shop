@@ -20,6 +20,7 @@ export default async function Home() {
       trend: true,
     },
   });
+  const products = await prisma.product.findMany({});
 
   return (
     <div className="block mx-auto mt-[80px] lg:mt-[200px]">

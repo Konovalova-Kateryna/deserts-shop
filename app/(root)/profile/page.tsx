@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
   const session = await getUserSession();
-  console.log("str 7 session", session);
 
   if (!session) {
     return redirect("/not-auth");

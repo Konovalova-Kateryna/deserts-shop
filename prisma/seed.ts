@@ -86,8 +86,115 @@ async function up() {
         titleUa: "Макарон з лаймовою начинкою",
         description:
           "Макарон має ніжну та хрустку скоринку з легким цитрусовим ароматом. Начинка з лайма має свіжий та насичений смак, який робить цей макарон освіжаючим та легким.",
-        imageUrl: "",
+        imageUrl: "/lime-feeling-macaron.png",
       },
+
+      {
+        id: nanoid(),
+        name: "Strawberry Milkshake Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 60,
+        titleUa: "Макарун з полуничним мілкшейком",
+        description:
+          "Солодкий смак літа — крем із полуничного мілкшейку, що огортає м’якою ніжністю. Повертає у дитинство з кожним шматочком.",
+
+        imageUrl: "/roze-macaron.png",
+      },
+
+      {
+        id: nanoid(),
+        name: "Coffee Cream Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 60,
+        titleUa: "Макарун з кавовим кремом",
+        description:
+          "Інтенсивний аромат кави з вершковим кремом створює ідеальну пару для справжніх поціновувачів еспресо. Ідеально до ранку.",
+        imageUrl: "/coffe-macaron.png",
+      },
+
+      {
+        id: nanoid(),
+        name: "Mango Passion Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з манго та маракуєю",
+        description:
+          "Екзотичний дует стиглого манго і маракуї подарує тропічний настрій. Свіжий, фруктовий, незабутній.",
+        imageUrl: "/mango_macaroon.png",
+      },
+
+      {
+        id: nanoid(),
+        name: "Blueberry Cheesecake Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з чорничним чізкейком",
+        description:
+          "Чорниця у поєднанні з вершковим сиром створює ніжний смак знайомого десерту в новому, мініатюрному форматі.",
+        imageUrl: "/macaroon_blackberry.png",
+      },
+      {
+        id: nanoid(),
+        name: "Salted Caramel Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з солоною карамеллю",
+        description:
+          "Тандем солодкого та солоного: м'який крем із солоної карамелі дарує незабутній післясмак. Баланс, який захоплює.",
+        imageUrl: "/lime_macaroon.png",
+      },
+      {
+        id: nanoid(),
+        name: "Vanilla Bean Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з ваніллю",
+        description:
+          "Класика, яка не набридає. Ароматна мадагаскарська ваніль у кремі, захована в делікатній оболонці — витончено та смачно.",
+        imageUrl: "/vanilla-macaron.png",
+      },
+      {
+        id: nanoid(),
+        name: "Lemon Curd Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з лимонним курдом",
+        description:
+          "Свіжий, з легкою кислинкою — лимонний курд надає десерту витончену цитрусову нотку, що ідеально балансує солодкість.",
+        imageUrl: "/macaroon_lemon.png",
+      },
+
+      {
+        id: nanoid(),
+        name: "Chocolate Hazelnut Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з шоколадом та лісовим горіхом",
+        description:
+          "Свіжий, з легкою кислинкою — лимонний курд надає десерту витончену цитрусову нотку, що ідеально балансує солодкість.",
+        imageUrl: "/hazelnut-macaron.png",
+      },
+      {
+        id: nanoid(),
+        name: "Raspberry & Rose Macaron",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з малиною та трояндою",
+        description:
+          "Поєднання ніжної малини та квіткового аромату троянди створює вишуканий смак, що зачаровує з першого укусу. Гармонія солодкого і свіжого.",
+        imageUrl: "/macaroon-roze.png",
+      },
+      {
+        id: nanoid(),
+        name: "Macaron with Pistachio Cream",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 50,
+        titleUa: "Макарун з фісташковим кремом",
+        description:
+          "Ніжна хрустка оболонка приховує в собі оксамитовий фісташковий крем з легкою ноткою ванілі. Ідеальний вибір для справжніх гурманів.",
+        imageUrl: "/pistachio-macaroon.png",
+      },
+
       {
         id: nanoid(),
         name: "Donut in chocolate glaze",
@@ -96,7 +203,27 @@ async function up() {
         titleUa: "Пончик в шоколадній глазурі",
         description:
           "Пончик має м'яку та пухку текстуру, яка тане в роті. Щедра шоколадна глазур додає ще більше смаку та аромату.",
-        imageUrl: "",
+        imageUrl: "/donut_1.png",
+      },
+      {
+        id: "1e73606f-7868-4192-965d-9ef4e67fb68e",
+        name: "Macaroon dor-blue",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 47,
+        titleUa: "Макарун з дор-блю та малиною",
+        description:
+          "Повітряна текстура з ніжним сирним мусом та малиною всередині — класика французької кондитерської традиції.",
+        imageUrl: "/macaroon_dor-blue.png",
+      },
+      {
+        id: "d1572c74-c98e-4ba0-8fcf-522e503606db",
+        name: "Macaron mango and coconut",
+        categoryId: "Qf7CuE8-oSw1RNx893CA4",
+        price: 105,
+        titleUa: "Макарун з манго та кокосом",
+        description:
+          "Солодкий акцент з тропічним ароматом манго та кокосу, для справжніх поціновувачів екзотики.",
+        imageUrl: "/mango_macaroon.png",
       },
     ],
   });

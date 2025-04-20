@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "../ui";
 import { TitleComponent } from "./title";
 import { Container } from "./container";
+import Link from "next/link";
 
 export const SurprizeSection = () => {
   return (
@@ -34,7 +35,12 @@ export const SurprizeSection = () => {
               Ти маєш можливість персоналізувати набори з тістечками згідно із
               своїми бажаннями та потребами.
             </p>
-            <Button>Обирай</Button>
+            <Link
+              href="/assortment"
+              className="inline-block py-5 lg:py-[14px] text-center w-full lg:w-[190px] border-solid border-2 border-black font-segoe uppercase font-normal text-md tracking-widest max-w-[320px]"
+            >
+              Обирай
+            </Link>
           </div>
         </div>
       </Container>

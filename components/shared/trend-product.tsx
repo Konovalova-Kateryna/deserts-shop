@@ -27,7 +27,7 @@ export const TrendProductComponent: React.FC<Props> = ({ product }) => {
             alt={product.titleUa}
             width={320}
             height={320}
-            className="w-[238px] h-[283px] mx-auto lg:w-[330px] lg:h-[390px] z-20 relative"
+            className="w-[238px] h-[283px] mx-auto lg:w-[330px] lg:h-[390px] z-20 relative "
           />
           <Image
             src="/shadow.png"
