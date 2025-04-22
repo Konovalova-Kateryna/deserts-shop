@@ -10,6 +10,6 @@ export const search = async (query: string): Promise<Product[]> => {
   ).data;
 };
 
-export const favoriteProduct = async () => {
-  return await axiosInstance.get<>();
-};
+// export const favoriteProduct = async () => {
+//   return await axiosInstance.get<>();
+// };

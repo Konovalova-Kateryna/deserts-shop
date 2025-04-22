@@ -6,13 +6,13 @@ import { Heart } from "lucide-react";
 import { Container } from "@/components/shared";
 
 interface PageParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params }: PageParams) {
-  const { id } = params;
+  const { id } = await params;
   const product = await prisma.product.findFirst({ where: { id } });
 
   if (!product) {

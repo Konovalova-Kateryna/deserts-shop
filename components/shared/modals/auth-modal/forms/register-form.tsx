@@ -39,7 +39,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
       toast.success("Успішно зареєстровано!", { icon: "✅" });
     } catch (error) {
       console.error("Error [REGISTER]", error);
-      toast.error(error?.message, { icon: "❌" });
+      toast.error("Помилка при реєстрації", { icon: "❌" });
     }
   };
 

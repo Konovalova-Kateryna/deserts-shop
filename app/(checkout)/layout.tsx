@@ -1,5 +1,6 @@
 import { Footer, Header } from "@/components/shared";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Cake-studio SWEET BAKERY | Кошик",
@@ -17,13 +18,15 @@ export default function CheckoutLayout({
         backgroundImage: "url('/modal_bg_img.png')",
       }}
     >
-      <Header
-        hasSearch={false}
-        hasCart={false}
-        className="bg-transparent z-10"
-      />
-      {children}
-      <Footer />
+      <Suspense fallback={null}>
+        <Header
+          hasSearch={false}
+          hasCart={false}
+          className="bg-transparent z-10"
+        />
+        {children}
+        <Footer />
+      </Suspense>
     </main>
   );
 }

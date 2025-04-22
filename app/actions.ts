@@ -5,8 +5,9 @@ import { prisma } from "@/prisma/prisma-client";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { nanoid } from "nanoid";
 import { cookies } from "next/headers";
-import nodemailer from "nodemailer";
+import nodemailer, { TransportOptions } from "nodemailer";
 import {
+  EmailCartItem,
   mailOptionsForOrder,
   mailOptionsForVerificationCode,
 } from "@/lib/sendEmail";
@@ -33,7 +34,7 @@ const transporter = nodemailer.createTransport({
     pass: SMTP_PASS,
   },
   debug: SMTP_DEBUG,
-});
+} as TransportOptions);
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
@@ -96,6 +97,10 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     });
 
+    const parsedItems = JSON.parse(
+      JSON.stringify(order.items || null)
+    ) as EmailCartItem[];
+
     // Send email
     await transporter.sendMail(
       mailOptionsForOrder({
@@ -105,7 +110,7 @@ export async function createOrder(data: CheckoutFormValues) {
         orderId: order.id,
         orderAddress: data.address,
         totalAmount: order.totalAmount,
-        items: order.items,
+        items: parsedItems,
       }),
       (error, info) => {
         if (error) {
@@ -201,6 +206,6 @@ export async function registerUser(body: Prisma.UserCreateInput) {
     );
   } catch (error) {
     console.error("[REGISTER_USER] Server Error", error);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }

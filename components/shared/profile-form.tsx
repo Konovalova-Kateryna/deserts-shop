@@ -26,24 +26,8 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
       fullName: data.fullName,
       email: data.email,
       password: "",
-      confirmPassword: "",
     },
   });
-
-  const onSubmit = async (data: TFormUpdateUserType) => {
-    try {
-      await updateUserInfo({
-        email: data.email,
-        fullName: data.fullName,
-        password: data.password,
-      });
-
-      toast.error("Особисті дані оновлено", { icon: "✅" });
-    } catch (error) {
-      console.error("Error [PROFILE]", error);
-      toast.error("Помилка при оновленні особистих даних", { icon: "❌" });
-    }
-  };
 
   const onClickSignOut = () => {
     signOut({
@@ -96,4 +80,18 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
       </FormProvider>
     </Container>
   );
+};
+const onSubmit = async (data: TFormUpdateUserType) => {
+  try {
+    await updateUserInfo({
+      email: data.email,
+      fullName: data.fullName,
+      password: data.password,
+    });
+
+    toast.error("Особисті дані оновлено", { icon: "✅" });
+  } catch (error) {
+    console.error("Error [PROFILE]", error);
+    toast.error("Помилка при оновленні особистих даних", { icon: "❌" });
+  }
 };

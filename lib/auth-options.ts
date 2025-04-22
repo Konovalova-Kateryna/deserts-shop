@@ -41,7 +41,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         },
       },
       async authorize(credentials) {
-        if (!credentials) {
+        if (
+          !credentials ||
+          typeof credentials.email !== "string" ||
+          typeof credentials.password !== "string"
+        ) {
           return null;
         }
 

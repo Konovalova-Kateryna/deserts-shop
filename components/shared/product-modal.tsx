@@ -34,21 +34,21 @@ export const ProductModal: React.FC<Props> = ({
           <TitleComponent className="mb-0 p-0 lg:mb-0 bg-transparent text-black lg:leading-[60px] font-segoe">
             {product.titleUa}
           </TitleComponent>
-          <div className="lg:flex flex-row gap-[200px] justify-center mt-5 ">
+          <div className="lg:flex flex-row justify-between mt-5 ">
             <div className="relative">
               <Image
                 src={product.imageUrl || "/NoPhoto.png"}
                 alt={product.titleUa}
                 width={320}
                 height={320}
-                className="w-auto h-[210px] mx-auto lg:w-[330px] lg:h-[390px] z-20 relative"
+                className="w-auto h-[210px] mx-auto lg:w-[500px] lg:h-[390px] z-20 relative"
               />
               <Image
                 src="/shadow.png"
                 alt="shadow"
                 width={320}
                 height={30}
-                className="absolute z-20 bottom-[-25px] left-4 w-[260px] h-auto"
+                className="absolute z-10 bottom-[-25px]  w-[260px] h-auto lg:w-[500px]"
               />
             </div>
             <div className="lg:w-[433px] gap-[70px]">

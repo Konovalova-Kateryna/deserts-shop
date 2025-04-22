@@ -1,3 +1,10 @@
+export interface EmailCartItem {
+  product: {
+    titleUa: string;
+  };
+  quantity: number;
+}
+
 interface sendEmailProps {
   sender: string;
   email: string;
@@ -5,8 +12,8 @@ interface sendEmailProps {
   orderId: string;
   orderAddress: string;
   totalAmount: number;
-  // eslint-disable-next-line
-  items: any[];
+
+  items: EmailCartItem[];
 }
 
 interface mailOptionsForVerificationCodeProps {
@@ -34,7 +41,9 @@ sendEmailProps) => {
                   <p>Загальна вартість замовлення - ${totalAmount} грн.</p>
                   <p>Його буде доставлено за адресою ${orderAddress}</p>
                 ${items.map((item) => {
-                  return `<p>${item.product.titleUa} - ${item.quantity} шт</p>`;
+                  return `<p>${item!.product.titleUa} - ${
+                    item!.quantity
+                  } шт</p>`;
                 })}
                   `,
   };

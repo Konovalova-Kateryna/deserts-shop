@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "./container";
 import NextLink from "next/link";
 import { Heart } from "lucide-react";
@@ -10,39 +10,18 @@ import { CartButton } from "./cart-button";
 import { ProfileBtn } from "./profile-btn";
 import { AuthModal } from "./modals/auth-modal/auth-modal";
 import { BurgerBtn } from "./modals/burger-menu/burger-btn";
-
-import { useRouter, useSearchParams } from "next/navigation";
-import toast from "react-hot-toast";
+import { ToastHandler } from "@/lib/toast-handler";
 
 interface Props {
   className?: string;
   hasSearch?: boolean;
+  hasCart?: boolean;
 }
 
 export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
-  const router = useRouter();
 
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    let toastMessage = "";
-
-    if (searchParams.has("paid")) {
-      toastMessage = "Замовлення оплачено!";
-    }
-
-    if (searchParams.has("verified")) {
-      toastMessage = "Ваш email підтверджено!";
-    }
-
-    if (toastMessage) {
-      setTimeout(() => {
-        router.replace("/");
-        toast.success(toastMessage, { duration: 3000 });
-      }, 1000);
-    }
-  }, [searchParams, router]);
+  ToastHandler();
 
   return (
     <header className={className}>

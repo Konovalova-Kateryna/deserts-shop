@@ -39,19 +39,21 @@ model Category {
 }
 
 model Product {
-    id          String     @id @unique @default(dbgenerated())
+    id          String @id @unique @default(dbgenerated())
     name        String
     titleUa     String
     description String
     price       Int
     imageUrl    String
     categoryId  String
-    favorite    Boolean    @default(false)
-    createdAt   DateTime   @default(now())
-    updatedAt   DateTime   @updatedAt
-    trend       Boolean    @default(false)
-    CartItem    CartItem[]
-    category    Category   @relation(fields: [categoryId], references: [id])
+
+    favorite      Boolean    @default(false)
+    favoriteCount Int?
+    createdAt     DateTime   @default(now())
+    updatedAt     DateTime   @updatedAt
+    trend         Boolean    @default(false)
+    CartItem      CartItem[]
+    category      Category   @relation(fields: [categoryId], references: [id])
 
     FavoriteItem FavoriteItem[]
 }

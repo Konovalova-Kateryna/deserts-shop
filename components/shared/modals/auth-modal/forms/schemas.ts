@@ -20,9 +20,9 @@ export const FormRegisterSchema = FormLoginSchema.merge(
 });
 
 export const FormUpdateUserSchema = z.object({
-  fullName: z.string().optional(),
-  email: z.string().email({ message: "Invalid email address" }).optional(),
-  password: z.string().optional(),
+  fullName: z.string(),
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string(),
 });
 
 export type TFormLoginType = z.infer<typeof FormLoginSchema>;

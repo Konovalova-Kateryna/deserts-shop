@@ -52,7 +52,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
             )}
           >
             {!totalAmount && (
-              <div className="flex flex-col items-center justify-center w-72 h-fullmx-auto">
+              <div className="flex flex-col items-center justify-center w-72 h-full mx-auto">
                 <h2 className="font-segoe font-semibold text-2xl mb-8">
                   Кошик порожній
                 </h2>

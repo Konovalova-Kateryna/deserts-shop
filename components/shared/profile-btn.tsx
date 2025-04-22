@@ -14,8 +14,6 @@ interface Props {
 export const ProfileBtn: React.FC<Props> = ({ className, onClick }) => {
   const { data: session } = useSession();
 
-  console.log("session", session?.user.name);
-
   return (
     <div className={className}>
       {!session ? (

@@ -84,6 +84,7 @@ async function up() {
         categoryId: "Qf7CuE8-oSw1RNx893CA4",
         price: 70,
         titleUa: "Макарон з лаймовою начинкою",
+        trend: true,
         description:
           "Макарон має ніжну та хрустку скоринку з легким цитрусовим ароматом. Начинка з лайма має свіжий та насичений смак, який робить цей макарон освіжаючим та легким.",
         imageUrl: "/lime-feeling-macaron.png",
