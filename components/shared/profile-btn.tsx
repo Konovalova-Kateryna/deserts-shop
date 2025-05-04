@@ -26,7 +26,7 @@ export const ProfileBtn: React.FC<Props> = ({ className, onClick }) => {
         </button>
       ) : (
         <NextLink href="/profile">
-          <Avatar name={session?.user?.name || ""} />
+          <Avatar name={session?.user?.name || "A A"} />
         </NextLink>
       )}
     </div>

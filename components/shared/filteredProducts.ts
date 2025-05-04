@@ -4,7 +4,10 @@ export const filterProductsByCategory = (
   allProducts: Product[],
   trendProducts: Product[],
   activeCategory: string | null
-): { filteredProducts: Product[]; trendingProduct: Product } => {
+): {
+  filteredProducts: Product[];
+  trendingProduct: Product;
+} => {
   const filteredProducts = allProducts.filter(
     (product) =>
       activeCategory === null || product.categoryId === activeCategory

@@ -40,7 +40,7 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
                 <div className="hidden lg:flex gap-6">
                   <SearchInput />
 
-                  <NextLink href="">
+                  <NextLink href="/favorite">
                     <Heart
                       size="48"
                       strokeWidth={1}

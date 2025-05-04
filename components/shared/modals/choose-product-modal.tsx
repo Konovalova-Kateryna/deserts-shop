@@ -9,7 +9,7 @@ import { ProductModal } from "@/components/shared";
 import Icon from "../icon";
 import { useCartStore } from "@/store";
 import toast from "react-hot-toast";
-import { toggleFavorite } from "../toggle-favorite";
+import { toggleFavorite } from "../../../lib/toggle-favorite";
 
 interface Props {
   className?: string;

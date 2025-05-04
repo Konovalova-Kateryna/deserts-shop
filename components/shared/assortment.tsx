@@ -17,6 +17,8 @@ import {
 
 import { useCartStore } from "@/store";
 
+import { useFavorites } from "@/hooks/use-favorites";
+
 interface CategoryWithProducts extends Category {
   products: Product[];
 }
@@ -35,6 +37,8 @@ export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
 
   const allProducts = categories.flatMap((cat) => cat.products ?? []);
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
+
+  const { items } = useFavorites();
 
   const { filteredProducts } = filterProductsByCategory(
     allProducts,
@@ -70,6 +74,10 @@ export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
         return products.sort((a, b) => a.favoriteCount! - b.favoriteCount!);
     }
   }, [filteredProducts, sortOptions]);
+
+  const favoriteProductsIds = useMemo(() => {
+    return items?.map((item) => item.product.id) ?? [];
+  }, [items]);
 
   return (
     <div>
@@ -121,6 +129,7 @@ export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
               item={item}
               index={index}
               showDescription={true}
+              isProductFavorite={favoriteProductsIds.includes(item.id)}
             />
           </div>
         ))}

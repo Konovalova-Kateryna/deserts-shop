@@ -4,8 +4,10 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { Heart, ShoppingBasket } from "lucide-react";
 import { Product } from "@prisma/client";
-import { toggleFavorite } from "./toggle-favorite";
+import { toggleFavorite } from "../../lib/toggle-favorite";
 import { cn } from "@/lib/utils";
+import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 interface Props {
   item: Product;
@@ -13,6 +15,7 @@ interface Props {
   index: number;
   showDescription: boolean;
   onBtnClick: () => void;
+  isProductFavorite?: boolean;
 }
 
 const colors = [
@@ -27,9 +30,11 @@ export const ProductCard: React.FC<Props> = ({
   className,
   showDescription,
   onBtnClick,
+  isProductFavorite,
 }) => {
   const bgColor = useMemo(() => colors[index % colors.length], [index]);
   const [isFavorite, setFavorite] = useState(false);
+  const { data: session } = useSession();
 
   const handleClick = async ({
     productId,
@@ -38,15 +43,20 @@ export const ProductCard: React.FC<Props> = ({
     productId: string;
     isFavorite: boolean;
   }) => {
-    console.log("str toggle favorite", productId);
+    if (!session) {
+      toast.error("Ви повинні бути авторизовані, щоб додавати в обране.", {
+        icon: "❌",
+      });
+      return;
+    }
     await toggleFavorite(productId, isFavorite);
-    setFavorite(!isFavorite);
+    setFavorite(!isProductFavorite);
   };
 
   return (
     <div className={cn("h-full w-full relative", className)}>
       <div
-        className={` px-7 py-5 lg:py-20 lg:px-12 grid grid-rows-[auto_1fr_auto] grid-cols-2 gap-8 text-black ${bgColor} group`}
+        className={` px-7 py-5 lg:h-[905px] lg:py-20 lg:px-12 grid grid-rows-[auto_1fr_auto] grid-cols-2 gap-8 text-black ${bgColor} group`}
       >
         <div className="relative justify-self-center row-start-2 lg:row-start-1 col-start-1 col-span-2">
           <Image
@@ -84,7 +94,7 @@ export const ProductCard: React.FC<Props> = ({
           <Heart
             className={cn(
               `hover:text-red-500 w-full h-full hover:stroke-2`,
-              isFavorite && "fill-red-500"
+              isProductFavorite && "fill-red-500"
             )}
             strokeWidth={1}
           />

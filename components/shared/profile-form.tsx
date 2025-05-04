@@ -13,6 +13,7 @@ import { signOut } from "next-auth/react";
 import { Container, FormInput } from "@/components/shared";
 import { Button } from "../ui";
 import { updateUserInfo } from "@/app/actions";
+import { FavoriteProducts } from "./favorite-products";
 
 interface Props {
   className?: string;
@@ -33,6 +34,21 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
     signOut({
       callbackUrl: "/",
     });
+  };
+
+  const onSubmit = async (data: TFormUpdateUserType) => {
+    try {
+      await updateUserInfo({
+        email: data.email,
+        fullName: data.fullName,
+        password: data.password,
+      });
+
+      toast.error("Особисті дані оновлено", { icon: "✅" });
+    } catch (error) {
+      console.error("Error [PROFILE]", error);
+      toast.error("Помилка при оновленні особистих даних", { icon: "❌" });
+    }
   };
 
   return (
@@ -78,20 +94,9 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
           </Button>
         </form>
       </FormProvider>
+
+      {/* Favorites section */}
+      <FavoriteProducts />
     </Container>
   );
-};
-const onSubmit = async (data: TFormUpdateUserType) => {
-  try {
-    await updateUserInfo({
-      email: data.email,
-      fullName: data.fullName,
-      password: data.password,
-    });
-
-    toast.error("Особисті дані оновлено", { icon: "✅" });
-  } catch (error) {
-    console.error("Error [PROFILE]", error);
-    toast.error("Помилка при оновленні особистих даних", { icon: "❌" });
-  }
 };

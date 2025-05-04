@@ -1,4 +1,5 @@
 import { ProfileForm } from "@/components/shared";
+
 import { getUserSession } from "@/lib/get-user-session";
 import { prisma } from "@/prisma/prisma-client";
 
@@ -16,6 +17,5 @@ export default async function ProfilePage() {
   if (!user) {
     return redirect("/not-auth");
   }
-
   return <ProfileForm data={user} />;
 }

@@ -26,14 +26,6 @@ export async function GET() {
       },
     });
 
-    // const favoriteProducts = await prisma.favorite.findMany({
-    //   where: {
-    //     userId: token,
-    //   },
-    //   include: {
-    //     product: true,
-    //   },
-    // });
     return NextResponse.json(favoriteProducts);
   } catch (error) {
     console.log("[FAVORITE_GET] Server Error", error);
@@ -44,7 +36,7 @@ export async function GET() {
   }
 }
 
-// add product to favorite
+// toggle product to favorite
 
 export async function POST(req: NextRequest) {
   try {
@@ -54,7 +46,6 @@ export async function POST(req: NextRequest) {
     }
 
     const data = (await req.json()) as FavoriteItemDTO;
-    console.log("str 56 data", data);
 
     if (!data) {
       return NextResponse.json({ message: "Missing data" }, { status: 400 });
@@ -105,80 +96,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
-// export async function GET() {
-//   try {
-//     // const session = await auth();
-//     // if (!session) {
-//     //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-//     // }
-
-//     const favorite = await prisma.favorite.findMany();
-//     return NextResponse.json(favorite);
-//   } catch (error) {
-//     console.log("[FAVORITE_GET] Server Error", error);
-//     return NextResponse.json(
-//       { message: "Something went wrong" },
-//       { status: 500 }
-//     );
-//   }
-// }
-
-// export async function GET_BY_ID(req: NextRequest) {
-//   console.log("Get by id", req);
-//   const favoriteId = req.nextUrl;
-//   const favorite = await prisma.favorite.findUnique({
-//     where: {
-//       id: favoriteId,
-//     },
-//   });
-//   return NextResponse.json(favorite);
-// }
-
-// export async function DELETE(req: NextRequest) {
-//   try {
-//     const userSession = await getUserSession();
-//     if (!userSession) {
-//       return NextResponse.json("Помилка авторизації", { status: 401 });
-//     }
-
-//     const { productId } = await req.json();
-
-//     const favorite = await prisma.favorite.findFirst({
-//       where: {
-//         userId: userSession.user.id,
-//       },
-//     });
-//     console.log("[FAVORITE_DELETE] favorite", favorite);
-
-//     if (!favorite) {
-//       return NextResponse.json(
-//         { message: "Favorite not found" },
-//         { status: 404 }
-//       );
-//     }
-
-//     const favoriteItem = await prisma.favoriteItem.findFirst({
-//       where: {
-//         favoriteId: favorite.id,
-//         productId: productId,
-//       },
-//     });
-//     console.log(favoriteItem);
-
-//     await prisma.favoriteItem.delete({
-//       where: {
-//         id: favoriteItem?.id,
-//         productId: productId,
-//       },
-//     });
-
-//     return NextResponse.json(favoriteItem);
-//   } catch (error) {
-//     console.log("[FAVORITE_DELETE] Server Error", error);
-//     return NextResponse.json(
-//       { message: "Something went wrong" },
-//       { status: 500 }
-//     );
-//   }
-// }

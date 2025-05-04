@@ -10,9 +10,10 @@ import React from "react";
 import { Product } from "@prisma/client";
 import Link from "next/link";
 
-export const ProductsCarousel: React.FC<{ products: Product[] }> = ({
-  products,
-}) => {
+export const ProductsCarousel: React.FC<{
+  products: Product[];
+  favoriteProductsIds: string[];
+}> = ({ products, favoriteProductsIds }) => {
   return (
     <Carousel
       opts={{
@@ -34,6 +35,7 @@ export const ProductsCarousel: React.FC<{ products: Product[] }> = ({
                 item={item}
                 index={index}
                 showDescription={false}
+                isProductFavorite={favoriteProductsIds.includes(item.id)}
               />
             </Link>
           </CarouselItem>

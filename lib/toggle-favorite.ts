@@ -7,12 +7,6 @@ export const toggleFavorite = async (
     return;
   }
   try {
-    // const userSession = await getUserSession();
-    // if (!userSession) {
-    //   toast("Потрібна авторизація", { icon: "❌" });
-    //   return;
-    // }
-
     if (isFavorite) {
       await fetch("/api/favorite", {
         method: "POST",

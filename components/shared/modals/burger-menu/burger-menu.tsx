@@ -1,11 +1,11 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Home, ShoppingBag, User } from "lucide-react";
+import { Home, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
-import Icon from "../../icon";
+
 import { AuthModal } from "../auth-modal/auth-modal";
-import { Button } from "@/components/ui";
+import { useSession } from "next-auth/react";
 
 interface Props {
   className?: string;
@@ -15,9 +15,17 @@ export const BurgerMenu: React.FC<React.PropsWithChildren<Props>> = ({
   className,
   children,
 }) => {
-  const [openSubmenu, setOpenSubmenu] = useState(false);
+  // const [openSubmenu, setOpenSubmenu] = useState(false);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const { data: session } = useSession();
+
+  const handleClick = () => {
+    setOpenMenu(false);
+    if (!session) {
+      setOpenAuthModal(true);
+    }
+  };
 
   return (
     <Sheet open={openMenu} onOpenChange={setOpenMenu}>
@@ -39,76 +47,39 @@ export const BurgerMenu: React.FC<React.PropsWithChildren<Props>> = ({
             Головна
           </Link>
           <div className="relative">
-            <button
-              onClick={() => setOpenSubmenu(!openSubmenu)}
-              className="flex items-center justify-between w-full"
+            <Link
+              href={"/assortment"}
+              onClick={() => setOpenMenu(false)}
+              className="flex items-center gap-2"
             >
-              <span className="flex items-center gap-2">
-                <ShoppingBag size={20} />
-                Асортимент
-              </span>
-              <ChevronDown
-                size={20}
-                className={cn(
-                  "transition-transform",
-                  openSubmenu && "rotate-180"
-                )}
-              />
-            </button>
-            {openSubmenu && (
-              <div className="flex flex-col gap-2 pl-6 mt-2 text-lg">
-                <Link
-                  href="/assortiment/donuts"
-                  className="flex gap-2"
-                  onClick={() => setOpenMenu(false)}
-                >
-                  <Icon
-                    name="icon-donut"
-                    className=" fill-none stroke-black stroke-2 w-5 h-5"
-                  />
-                  Пончики
-                </Link>
-                <Link
-                  href="/assortiment/macaroons"
-                  className="flex gap-2"
-                  onClick={() => setOpenMenu(false)}
-                >
-                  <Icon
-                    name="icon-makaroon"
-                    className=" fill-none stroke-black w-5 h-5"
-                  />
-                  Макаруни
-                </Link>
-                <Link
-                  href="/assortiment/cupcakes"
-                  className="flex gap-2"
-                  onClick={() => setOpenMenu(false)}
-                >
-                  <Icon
-                    name="icon-cupcake"
-                    className=" fill-none stroke-black w-5 h-5"
-                  />
-                  Капкейки
-                </Link>
-              </div>
-            )}
+              <ShoppingBag size={20} />
+              Асортимент
+            </Link>
           </div>
 
-          <Button
-            className="flex items-center gap-2 w-full"
-            onClick={() => {
-              setOpenAuthModal(true);
-            }}
-          >
-            <User size={20} />
-            Профіль
-          </Button>
-          <AuthModal
-            open={openAuthModal}
-            onClose={() => setOpenAuthModal(false)}
-          />
+          {session ? (
+            <Link
+              href="/profile"
+              onClick={handleClick}
+              className="flex items-center gap-2 w-full"
+            >
+              <User size={20} />
+              Профіль
+            </Link>
+          ) : (
+            <button
+              className="flex items-center gap-2 w-full"
+              onClick={handleClick}
+            >
+              <User size={20} />
+              Профіль
+            </button>
+          )}
+
+          {/* {session && <FavoriteProducts/>} */}
         </div>
       </SheetContent>
+      <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
     </Sheet>
   );
 };
