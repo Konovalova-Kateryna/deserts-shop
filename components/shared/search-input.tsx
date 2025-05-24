@@ -54,7 +54,7 @@ export const SearchInput = () => {
         initial={{ x: 0 }}
         animate={{ x: isFocused ? -320 : 0 }}
         transition={{ duration: 0.3 }}
-        className="flex items-center gap-2 "
+        className="flex items-center gap-2  "
       >
         <Search
           size="48"
@@ -80,7 +80,7 @@ export const SearchInput = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute top-full right-[260px] mt-4 w-full text-l"
+          className="absolute top-full right-0 mt-4 w-[320px] text-l z-20 bg-slate-100"
         >
           {products.map((product) => (
             <Link

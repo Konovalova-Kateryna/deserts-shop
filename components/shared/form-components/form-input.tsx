@@ -6,7 +6,8 @@ import { Input } from "@/components/ui";
 import { ErrorText } from "../error-text";
 import { ClearBtn } from "../clear-btn";
 import { useFormContext } from "react-hook-form";
-import { RefObject } from "react";
+import { RefObject, useState } from "react";
+import { PasswordToggleBtn } from "../password-toggle-btn";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -21,7 +22,7 @@ export const FormInput: React.FC<Props> = ({
   label,
   required,
   className,
-
+  type = "text",
   ...props
 }) => {
   const {
@@ -33,6 +34,12 @@ export const FormInput: React.FC<Props> = ({
 
   const value = watch(name);
   const errorText = errors[name]?.message as string;
+  const [showPassword, setShowPassword] = useState(false);
+  const inputType = type === "password" && showPassword ? "text" : type;
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const onClearClick = () => {
     setValue(name, "", { shouldValidate: true });
@@ -48,10 +55,18 @@ export const FormInput: React.FC<Props> = ({
       )}
       <div className="relative">
         <Input
+          type={inputType}
           className="h-12 text-lg lg:text-xl"
           {...register(name)}
           {...props}
         />
+        {type === "password" && (
+          <PasswordToggleBtn
+            onToggleClick={togglePasswordVisibility}
+            isVisible={showPassword}
+            className="mr-2"
+          />
+        )}
         {value && <ClearBtn onClick={onClearClick} />}
       </div>
       {errorText && <ErrorText text={errorText} className="mt-2" />}

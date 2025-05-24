@@ -54,9 +54,12 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <div className={cn("h-full w-full relative", className)}>
+    <>
       <div
-        className={` px-7 py-5 lg:h-[905px] lg:py-20 lg:px-12 grid grid-rows-[auto_1fr_auto] grid-cols-2 gap-8 text-black ${bgColor} group`}
+        className={cn(
+          `h-full w-full relative px-7 py-5  lg:py-20 lg:px-12 grid grid-rows-[auto_1fr_auto] grid-cols-2 gap-8 text-black ${bgColor} group`,
+          className
+        )}
       >
         <div className="relative justify-self-center row-start-2 lg:row-start-1 col-start-1 col-span-2">
           <Image
@@ -64,14 +67,14 @@ export const ProductCard: React.FC<Props> = ({
             width={320}
             height={320}
             alt={item.name}
-            className="w-auto h-[206px] object-contain lg:w-[360px] lg:h-[320px] "
+            className="w-auto h-[206px] object-contain lg:w-[360px] lg:h-[320px] z-20 relative "
           />
           <Image
             src="/shadow.png"
             alt="shadow"
             width={320}
             height={30}
-            className="absolute z-20 bottom-[-15px] left-0 w-[260px] lg:w-[360px] h-auto"
+            className="absolute z-10 bottom-[-15px] left-0 w-[260px] lg:w-[360px] h-auto"
           />
         </div>
         <h3 className="text-start text-xl font-segoe font-bold lg:text-2xl col-span-2 row-start-3 lg:row-start-2 min-h-[6rem] lg:min-h-[4rem]">
@@ -94,7 +97,7 @@ export const ProductCard: React.FC<Props> = ({
           <Heart
             className={cn(
               `hover:text-red-500 w-full h-full hover:stroke-2`,
-              isProductFavorite && "fill-red-500"
+              isProductFavorite && "fill-red-500 text-red-500"
             )}
             strokeWidth={1}
           />
@@ -131,6 +134,6 @@ export const ProductCard: React.FC<Props> = ({
           /* transform: translateY(-50%); */
         }
       `}</style>
-    </div>
+    </>
   );
 };
