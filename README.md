@@ -39,12 +39,12 @@
 
 ### Головна сторінка
 
-! [Головна] (./public/screenshots/main-page.png)
+! [Головна] (public/screenshots/main-page.png)
 
 ### Сторінка оформлення замовлення
 
-![Замовлення] (./public/screenshots/checkout.png)
+![Замовлення] (public/screenshots/checkout.png)
 
 ### Сторінка профілю
 
-![Профіль] (./public/screenshots/profile.png)
+![Профіль] (public/screenshots/profile.png)
