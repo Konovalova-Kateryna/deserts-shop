@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-Переглянути сайт можна за посиланням: [https://deserts-shop.vercel.app/]
+Переглянути сайт можна за посиланням: [https://deserts-shop.vercel.app/](https://deserts-shop.vercel.app/)
 
 ## Технології:
 
@@ -39,12 +39,12 @@
 
 ### Головна сторінка
 
-! [Головна] (./public/screenshots/main-page.png)
+! [Головна] (/screenshots/main-page.png)
 
 ### Сторінка оформлення замовлення
 
-![Замовлення] (./public/screenshots/checkout.png)
+![Замовлення] (/screenshots/checkout.png)
 
 ### Сторінка профілю
 
-![Профіль] (./public/screenshots/profile.png)
+![Профіль] (/screenshots/profile.png)
