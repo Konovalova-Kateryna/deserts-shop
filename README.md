@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Deserts Shop - інтернет магазин десертів
 
-## Getting Started
+Це pet-проєкт інтернет-магазину, розроблений з використанням **Next.js**. Реалізовано повноцінний e-commerce функціонал із власним бекендом, інтегрованим у Next.js.
 
-First, run the development server:
+## Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Переглянути сайт можна за посиланням: [https://deserts-shop.vercel.app/]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Технології:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js (App Router)** -використовується як для фронтенду, так і для бекенду (API routes)
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **ShadCN UI**
+- **Zustand** - керування станом
+- **NextAuth** - авторизація (Google та Credentials)
+- **Prisma + PostgreSQL** - база даних
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Основний функціонал
 
-## Learn More
+- Перегляд списку товарів; сортування товарів за категоріями, за ціною
+- Пошук товару за ключовими запитом
+- Кошик із збереженням стану
+- Авторизація (реєстрація, вхід через Google)
+- Оформлення замовлення
+- Бекенд реалізовано через **API routes** у Next.js
+- Адаптивний інтерфейс для мобільних і десктопних пристроїв
 
-To learn more about Next.js, take a look at the following resources:
+## Що я реалізувала самостійно:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Побудова структури проєкту та маршрутизація
+- Логіка кошика та замовлення
+- Інтеграція NextAuth та Google авторизації
+- АРІ-ендпоінти для роботи з товарами та замовленнями
+- Обробка помилок та валідація форм
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Скріншоти:
 
-## Deploy on Vercel
+### Головна сторінка
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+! [Головна] (./public/screenshots/main-page.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Сторінка оформлення замовлення
+
+![Замовлення] (./public/screenshots/checkout.png)
+
+### Сторінка профілю
+
+![Профіль] (./public/screenshots/profile.png)

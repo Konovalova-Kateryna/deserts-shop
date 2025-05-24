@@ -60,6 +60,17 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+      <div>
+        <p className="text-sm lg:text-base font-light text-white mt-10 lg:mt-5 lg:mb-5 text-center lg:text-end">
+          Created by{" "}
+          <NextLink
+            className="hover:text-blue-500 focus:text-blue-500 transition-colors duration-300"
+            href="www.linkedin.com/in/kateryna-konovalova-721348229"
+          >
+            Kateryna Konovalova
+          </NextLink>
+        </p>
+      </div>
     </footer>
   );
 };
