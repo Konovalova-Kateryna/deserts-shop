@@ -1,13 +1,25 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "./hero.css";
+import { motion } from "framer-motion";
 import { Container } from "../container";
 import { cn } from "@/lib/utils";
 
 interface Props {
   className?: string;
 }
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+  }),
+};
 
 export const Hero: React.FC<Props> = ({ className }) => {
   return (
@@ -19,7 +31,10 @@ export const Hero: React.FC<Props> = ({ className }) => {
     >
       <Container>
         <div className=" lg:inline-block lg:text-start lg:w-[994px] lg:h-[535px] relative">
-          <div className="w-full flex justify-center mb-[38px] lg:mb-0 lg:relative">
+          <motion.div className="w-full flex justify-center mb-[38px] lg:mb-0 lg:relative"
+          initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}>
             <Image
               src="/heroImg.jpg"
               alt="macaroons"
@@ -27,19 +42,59 @@ export const Hero: React.FC<Props> = ({ className }) => {
               height={530}
               className="bg-image"
             />
-          </div>
-          <h1 className="mx-auto text-shadow lg:relative lg:pt-[160px]  z-20 font-extrabold lg:font-bold text-[60px] lg:text-[200px] lg:flex items-center  uppercase lg:tracking-[5px] mb-6 lg:mb-11 font-Open_Sans">
+          </motion.div>
+          <motion.h1 className="
+              mx-auto text-shadow z-20 font-extrabold
+              text-[52px] leading-none
+              sm:text-[72px]
+              md:text-[96px]
+              lg:relative lg:pt-[160px] lg:font-bold lg:text-[200px] lg:flex items-center
+              uppercase lg:tracking-[5px] mb-6 lg:mb-11 font-Open_Sans
+            "
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            >
             Десер<span className="hero-title-end">ти</span>
-          </h1>
-          <p className=" font-roboto font-normal text-md lowercase leading-2  lg:text-[35px] mb-[30px] lg:mb-11 ">
+          </motion.h1>
+          <motion.p   className="
+              font-roboto font-normal lowercase leading-snug
+              text-base
+              sm:text-lg
+              md:text-xl
+              lg:text-[35px]
+              mb-[30px] lg:mb-11
+            "
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}>
             твоя насолода на свята і будні
-          </p>
-          <Link
-            className="inline-block py-5 lg:py-[14px] text-center w-full lg:w-[190px] border-solid border-2 border-black font-segoe uppercase font-normal text-md tracking-widest max-w-[320px]"
-            href="/assortment"
+          </motion.p>
+          <motion.div
+            custom={2}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
           >
-            обирай
-          </Link>
+            <Link
+              className="
+                inline-block py-4 px-8 text-center
+                w-full max-w-[320px]
+                sm:w-auto sm:min-w-[200px]
+                lg:py-[14px] lg:w-[190px]
+                border-solid border-2 border-black
+                font-segoe uppercase font-normal text-sm sm:text-base tracking-widest
+                transition-all duration-300
+                hover:bg-black hover:text-white
+                focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black
+              "
+              href="/assortment"
+            >
+              обирай
+            </Link>
+          </motion.div>
         </div>
       </Container>
     </section>

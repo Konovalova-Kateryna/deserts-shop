@@ -1,7 +1,10 @@
+"use client"
+
 import Image from "next/image";
 import { TitleComponent } from "./title";
 import { Container } from "./container";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export const SurprizeSection = () => {
   return (
@@ -12,6 +15,14 @@ export const SurprizeSection = () => {
           Створюй сюрпризи
         </TitleComponent>
         <div className="lg:flex gap-[100px] items-center lg:px-14 relative  z-30">
+            <motion.div
+            className="relative mb-8 lg:mb-0"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+          
           <Image
             src="/surprize_box.png"
             width={318}
@@ -26,7 +37,13 @@ export const SurprizeSection = () => {
             alt="shadow"
             className="absolute z-20 lg:w-[860px] lg:h-[860px] top-3 left-3"
           />
-          <div className="lg:w-[450px]">
+          </motion.div>
+
+          <motion.div className="lg:w-[450px]"
+          initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}>
             <h3 className="font-segoe font-bold text-2xl lg:text-3xl pb-5">
               Формуй подарунковий бокс за власним смаком
             </h3>
@@ -40,7 +57,7 @@ export const SurprizeSection = () => {
             >
               Обирай
             </Link>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

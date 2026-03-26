@@ -35,19 +35,18 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true }) => {
             classNameLink={""}
           />
           <div className="flex items-center gap-6">
-            <div className="flex gap-6">
-              {hasSearch && (
-                <div className="hidden lg:flex gap-6">
-                  <SearchInput />
-
-                  <NextLink href="/favorite">
-                    <Heart
-                      size="48"
-                      strokeWidth={1}
-                      className="  cursor-pointer hover:text-red-500"
-                    />
-                  </NextLink>
-                </div>
+            <div className="flex items-center gap-3 sm:gap-6">
+            {hasSearch && (
+              <div className="hidden lg:flex items-center gap-6">
+                <SearchInput />
+                <NextLink
+                  href="/favorite"
+                  aria-label="Обране"
+                  className="hover:text-red-500 transition-colors duration-200"
+                >
+                  <Heart size="48" strokeWidth={1} className="cursor-pointer" />
+                </NextLink>
+              </div>
               )}
 
               <ProfileBtn onClick={() => setOpenAuthModal(true)} />

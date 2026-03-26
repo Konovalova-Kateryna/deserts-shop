@@ -29,10 +29,10 @@ export const Footer: React.FC = () => {
             </h5>
             <ul className="font-roboto font-light text-lg lowercase leading-2 lg:text-base lg:leading-[19px]">
               <li className=" mb-2">
-                <NextLink href="">+38 093 265 32 25</NextLink>
+                <NextLink href="tel:+380932653225">+38 093 265 32 25</NextLink>
               </li>
               <li>
-                <NextLink href="">+38 050 265 32 25</NextLink>
+                <NextLink href="tel:+380502653225">+38 050 265 32 25</NextLink>
               </li>
             </ul>
           </div>
@@ -66,6 +66,8 @@ export const Footer: React.FC = () => {
           <NextLink
             className="hover:text-blue-500 focus:text-blue-500 transition-colors duration-300"
             href="www.linkedin.com/in/kateryna-konovalova-721348229"
+             target="_blank"
+          rel="noopener noreferrer"
           >
             Kateryna Konovalova
           </NextLink>

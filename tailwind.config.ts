@@ -1,4 +1,4 @@
-import { Open_Sans } from "next/font/google";
+// import { OpenSans } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -12,6 +12,7 @@ export default {
     extend: {
       screens: {
         lg: "1920px",
+         md:  "768px", 
         sm: "360px",
       },
       fontFamily: {

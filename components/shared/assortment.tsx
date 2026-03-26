@@ -16,8 +16,8 @@ import {
 } from "../ui/select";
 
 import { useCartStore } from "@/store";
-
 import { useFavorites } from "@/hooks/use-favorites";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CategoryWithProducts extends Category {
   products: Product[];
@@ -30,6 +30,19 @@ interface Props {
   categories: CategoryWithProducts[];
   trendProducts: Product[];
 }
+
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.07 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
+};
 
 export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -121,9 +134,28 @@ export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
         </Select>
       </div>
 
-      <div className="w-full flex flex-wrap gap-20 my-10">
+        {/* Product grid with stagger + AnimatePresence for filter transitions */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory ?? "all"}
+          className="
+            w-full grid gap-6 my-10
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+          "
+          variants={listVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
         {sortedProducts.map((item, index) => (
-          <div key={item.id} className="max-w-[530px]">
+            <motion.div
+              key={item.id}
+              variants={itemVariants}
+              layout
+              className="w-full"
+            >
             <ProductCard
               onBtnClick={() => onAddProduct(item)}
               item={item}
@@ -131,9 +163,20 @@ export const Assortment: React.FC<Props> = ({ categories, trendProducts }) => {
               showDescription={true}
               isProductFavorite={favoriteProductsIds.includes(item.id)}
             />
-          </div>
+          </motion.div> 
         ))}
-      </div>
+        </motion.div>
+      </AnimatePresence>
+
+       {sortedProducts.length === 0 && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center text-gray-500 font-segoe text-xl py-20"
+        >
+          Товарів у цій категорії не знайдено
+        </motion.p>
+      )}
     </div>
   );
 };
